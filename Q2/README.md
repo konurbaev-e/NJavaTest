@@ -1,6 +1,7 @@
 # Q2
 Что выведет следующий код?
 
+```java
 public class Main {
     public static void main(String[] args) {
         recur(99);
@@ -13,6 +14,7 @@ public class Main {
         }
     }
 }
+```
 
     1) a=99 a=100 a=101 a=100
     2) a=99 a=100 a=100 a=99
