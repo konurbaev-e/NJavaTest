@@ -1,2 +1,2 @@
 # NJavaTest
-N Java Test
+Some N-company Java Test =)
