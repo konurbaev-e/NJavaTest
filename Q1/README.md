@@ -19,5 +19,6 @@
 
 ## Правильный ответ
 1) java.util.TreeSet
+3) java.util.LinkedHashSet
 
 
