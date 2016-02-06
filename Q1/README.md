@@ -3,9 +3,7 @@
 основании Comparator'а)? Возможны несколько вариантов ответа.
 
     1) java.util.TreeSet
-    
     2) java.util.HashSet
-    
     3) java.util.LinkedHashSet
 
 ## TreeSet
