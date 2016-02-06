@@ -1,3 +1,5 @@
+package org.konurbaev;
+
 public class Foo {
     private Foo() {
         return this; // 1
