@@ -12,5 +12,11 @@ public class Main {
         System.out.println(a == c);
         System.out.println(a.equals(b));
         System.out.println(a.equals(d));
+
+
+        String charStr = new String(d);
+        System.out.println("NEW:");
+        System.out.println(a.equals(charStr));
+
     }
 }
