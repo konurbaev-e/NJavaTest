@@ -1,0 +1,18 @@
+rootProject.name = 'NJavaTest'
+include 'luxoft-interview'
+include 'Q1'
+include 'Q2'
+include 'Q3'
+include 'Q4'
+include 'Q5'
+include 'Q6'
+include 'Q7'
+include 'Q8'
+include 'Q9'
+include 'Q10'
+include 'Q11'
+include 'Q12'
+include 'Q13'
+
+
+
