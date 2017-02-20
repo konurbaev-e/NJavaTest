@@ -4,10 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DigestAfterRefactoring {
-    public abstract class DigestBeforeRefactoring {
-        private final Map<String, byte[]> cache = new HashMap<>();
+        private final Map<byte[], byte[]> cache = new HashMap<>();
 
-        public byte[] digest(String input) {
+        public byte[] digest(byte[] input) {
             byte[] result = cache.get(input);
             if (result == null) {
                 result = doDigest(input);
@@ -18,6 +17,8 @@ public class DigestAfterRefactoring {
             return result;
         }
 
-        protected abstract byte[] doDigest(String input);
-    }
+        protected abstract byte[] doDigest(byte[] input);
 }
+/*
+    массив байтов в качестве ключа не меняем, чтобы не менять интерфейс doDigest
+*/
