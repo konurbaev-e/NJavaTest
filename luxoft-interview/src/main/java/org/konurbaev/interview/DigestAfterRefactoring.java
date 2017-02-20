@@ -3,7 +3,7 @@ package org.konurbaev.interview;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DigestAfterRefactoring {
+public abstract class DigestAfterRefactoring {
         private final Map<byte[], byte[]> cache = new HashMap<>();
 
         public byte[] digest(byte[] input) {
