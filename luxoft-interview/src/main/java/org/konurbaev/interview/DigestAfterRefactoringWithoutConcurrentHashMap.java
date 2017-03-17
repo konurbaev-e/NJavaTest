@@ -7,15 +7,21 @@ public abstract class DigestAfterRefactoringWithoutConcurrentHashMap {
     private final Map<ByteArray, byte[]> cache = new HashMap<>();
 
     public byte[] digest(byte[] input) {
-        byte[] result = cache.get(input);
-        if (result == null) {
-            byte[] newResult = doDigest(input);
-            synchronized (cache) {
-                if (cache.get(input) == null) {
-                    cache.putIfAbsent(new ByteArray(input), newResult);
-                }
+        byte[] result;
+
+        synchronized (cache) {
+            result = cache.get(input);
+            if (result != null) {
+                return result;
             }
         }
+
+        result = doDigest(input);
+
+        synchronized (cache) {
+            cache.putIfAbsent(new ByteArray(input), result);
+        }
+
         return result;
     }
 
@@ -34,10 +40,15 @@ public abstract class DigestAfterRefactoringWithoutConcurrentHashMap {
 Теперь два массива, содержащие одни и те же данные, будут считаться одинаковыми,
 Кэш не будет распухать бесконечно, пока не кончится память.
 
-4. Запись и чтение в мапу происходит в synchronized блоке,
+4. Чтение и запись в мапу происходят в synchronized блоках,
 поэтому поток не может читать мапу в то время, пока другой поток её меняет.
 Это приводит к тому, что тот, кто читает, получив ссылку на массив,
 увидит все изменения с массивом, которые сделал поток, который его записывал.
+
+В противном случае, без синхронизации чтения, если и прочитаешь из мапы не null,
+то нет гарантий что увидишь все изменения в массиве,
+которые сделал поток, который клал массив в мапу,
+ибо между этими двумя потоками нет общей точки синхронизации.
 
 5. При объявлении HashMap убраны повторно указанные типы.
 */

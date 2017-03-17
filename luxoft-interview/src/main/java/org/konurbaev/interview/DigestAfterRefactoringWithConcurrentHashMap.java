@@ -7,7 +7,7 @@ public abstract class DigestAfterRefactoringWithConcurrentHashMap {
         private final Map<ByteArray, byte[]> cache = new ConcurrentHashMap<>();
 
         public byte[] digest(byte[] input) {
-            return cache.putIfAbsent(new ByteArray(input), doDigest(input));
+            return cache.computeIfAbsent(new ByteArray(input), k -> doDigest(input));
         }
 
         protected abstract byte[] doDigest(byte[] input);
@@ -19,6 +19,7 @@ public abstract class DigestAfterRefactoringWithConcurrentHashMap {
 
 2. Генерация значения происходит теперь не в synchronized блоке,
 соответственно будет возможно генерировать два ключа одновременно.
+За счет computeIfAbsent генерация значения происходит только, если ключа нет в мапе.
 
 3. Переопределен ключ для Map на обертку для byte[].
 В этой обертке переопределены методы equals и hashCode.
