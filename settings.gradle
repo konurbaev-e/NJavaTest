@@ -1,5 +1,6 @@
 rootProject.name = 'NJavaTest'
 include 'luxoft-interview'
+include 'stream-challenge'
 include 'Q1'
 include 'Q2'
 include 'Q3'
