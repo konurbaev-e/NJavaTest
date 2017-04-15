@@ -3,7 +3,7 @@ package org.konurbaev.interview;
 import java.util.Arrays;
 
 public class ByteArray {
-    byte[] bytes;
+    private final byte[] bytes;
 
     public ByteArray(byte[] bytes){
         this.bytes = bytes;
