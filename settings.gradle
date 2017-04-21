@@ -1,4 +1,5 @@
 rootProject.name = 'NJavaTest'
+include 'infowings-interview'
 include 'luxoft-interview'
 include 'stream-challenge'
 include 'Q1'
